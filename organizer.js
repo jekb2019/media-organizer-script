@@ -21,3 +21,10 @@ const createFolder = (parentPath, folderName) => {
 const videoPath = createFolder(basePath, 'videos');
 const capturedPath = createFolder(basePath, 'captured');
 const duplicatedPath = createFolder(basePath, 'duplicated');
+
+// move file from "from" to "to"
+const moveFile = (from, to) => {
+    return fs.promises.rename(from, to)
+        .then(()=>console.log(`${from} --> ${to}`))
+        .catch(()=>console.log('cannot move file'))
+}
