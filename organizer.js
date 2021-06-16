@@ -45,3 +45,12 @@ const collectFiles = (fileName) => {
             };
     }
 }
+
+// Read the unorganized media folder and sort
+fs.promises.readdir(basePath)
+    .then(data => {
+        data.forEach(file => {
+            collectFiles(file)
+        })
+    })
+    .catch(console.error);
