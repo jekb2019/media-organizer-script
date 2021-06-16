@@ -28,3 +28,20 @@ const moveFile = (from, to) => {
         .then(()=>console.log(`${from} --> ${to}`))
         .catch(()=>console.log('cannot move file'))
 }
+
+const collectFiles = (fileName) => {
+    switch(path.extname(fileName)) {
+        case '.mp4':
+        case '.mov':
+            moveFile(path.join(basePath, fileName), path.join(videoPath ,fileName));
+            break;
+        case '.png':
+        case '.aae':
+            moveFile(path.join(basePath, fileName), path.join(capturedPath ,fileName));
+            break;
+        default:
+            if(fileName.startsWith('IMG_E')) {
+                moveFile(path.join(basePath, fileName), path.join(duplicatedPath ,fileName));
+            };
+    }
+}
